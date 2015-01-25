@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'skelegem'
+Skelegem::CLI.start(ARGV)
