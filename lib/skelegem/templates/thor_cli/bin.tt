@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require '<%= name %>/cli'
+<%= name.split("_").map {|f| f.capitalize}.join %>::CLI.start(ARGV)

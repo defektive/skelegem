@@ -1,6 +1,6 @@
 # Skelegem
 
-TODO: Write a gem description
+Generate gems with custom dependencies, and templates
 
 ## Installation
 
@@ -20,7 +20,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    skelegem [master●●] % skelegem
+    Commands:
+      skelegem edit            # edit gemspec
+      skelegem help [COMMAND]  # Describe available commands or one specific command
+      skelegem new             # create a new gem
+      skelegem version         # print out the app version
+
+## [How this came to be](docs/index.md)
 
 ## Contributing
 

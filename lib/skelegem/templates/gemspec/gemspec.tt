@@ -1,0 +1,26 @@
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require '<%= config[:my_spec].name %>/version'
+
+Gem::Specification.new do |spec|
+  spec.name          = "<%= config[:my_spec].name %>"
+  spec.version       = <%= (config[:my_spec].name.split("_").map{|f| f.capitalize}.join) %>::VERSION
+  spec.authors       = <%= config[:my_spec].authors.to_s %>
+  spec.email         = <%= config[:my_spec].email.to_s %>
+  spec.summary       = %q{<%= config[:my_spec].summary %>}
+  spec.description   = %q{<%= config[:my_spec].description %>}
+  spec.homepage      = "<%= config[:my_spec].homepage %>"
+  spec.license       = "<%= config[:my_spec].license %>"
+
+  spec.files         = `git ls-files -z`.split("\x0")
+  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = <%= config[:my_spec].require_paths.to_s %>
+
+  <% config[:my_spec].runtime_dependencies.each do |dep| %>
+  spec.add_runtime_dependency "<%= dep.name %>", '<%= dep.requirement.to_s %>'<% end %>
+
+  <% config[:my_spec].development_dependencies.each do |dep| %>
+  spec.add_development_dependency "<%= dep.name %>", '<%= dep.requirement.to_s %>'<% end %>
+end
