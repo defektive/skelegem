@@ -1,0 +1,13 @@
+require "<%= name %>/version"
+require "thor"
+
+module <%= name.split("_").map {|f| f.capitalize}.join %>
+  class CLI < Thor
+    map "-v" => :version
+
+    desc "version", "print out the app version"
+    def version()
+      puts "#{self.class.name.split("::")[0]} #{<%= name.split("_").map {|f| f.capitalize}.join %>::VERSION}"
+    end
+  end
+end
